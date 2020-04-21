@@ -9,12 +9,21 @@
 </template>
 
 <style lang="scss">
+@import "./global-styles/colors";
+@import "./global-styles/typography.scss";
+
+body {
+  margin: 0;
+  background-color: $dark-blue;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: $system-font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  background-color: $dark-blue;
+  color: $white;
 }
 
 #nav {
