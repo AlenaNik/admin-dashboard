@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view />
   </div>
 </template>
@@ -16,7 +12,12 @@ body {
   margin: 0;
   background-color: $dark-blue;
 }
-
+h1 {
+  @include heading-1;
+}
+p {
+  @include large-text($purple);
+}
 #app {
   font-family: $system-font-family;
   -webkit-font-smoothing: antialiased;
@@ -26,16 +27,4 @@ body {
   color: $white;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
