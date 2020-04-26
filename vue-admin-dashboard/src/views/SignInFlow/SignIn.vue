@@ -2,9 +2,18 @@
     <div class="container"
          :class="{'light-background' : !isDarkMode, 'dark-background' : isDarkMode}"
     >
-        <div class="request">Don't have an account?
-        <router-link to="/request">Request an account</router-link>
-        </div>
+        <transition
+        name="slide-in-right"
+        enter-active-class="animated slideInRight">
+            <div
+                    v-show="show"
+                    class="request"
+            :class="{'light-request' : isDarkMode, 'dark-request' : !isDarkMode}"
+            >
+                Don't have an account?
+            <router-link to="/request">Request an account</router-link>
+            </div>
+        </transition>
         <div class="login">
             <img src="../../assets/DCHQ.svg" alt="" v-if="isDarkMode">
             <img src="../../assets/DCHQ-dark.svg" alt="" v-if="!isDarkMode">
@@ -24,18 +33,26 @@
     </div>
 </template>
 
+
 <script>
     export default {
-        name: "SignIn",
-        data: function() {
-            return {
-              isDarkMode: true
-            }
+        data() {
+          return  {
+              show: false
+          }
         },
+        mounted() {
+          this.show = true
+        },
+        name: "SignIn",
+        computed: {
+            isDarkMode() {
+                return this.$store.getters.isDarkMode;
+            }
+       },
         methods: {
                toggleDarkMode() {
-                   this.isDarkMode = !this.isDarkMode;
-                   document.body.style.background = this.isDarkMode ? "#212c4f" : "#f0f3f5";
+                   this.$store.commit('toggleDarkMode')
                }
         }
     }
