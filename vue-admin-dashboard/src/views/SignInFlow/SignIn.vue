@@ -2,9 +2,18 @@
     <div class="container"
          :class="{'light-background' : !isDarkMode, 'dark-background' : isDarkMode}"
     >
-        <div class="request">Don't have an account?
-        <router-link to="/request">Request an account</router-link>
-        </div>
+        <transition
+        name="slide-in-right"
+        enter-active-class="animated slideInRight">
+            <div
+                    v-show="show"
+                    class="request"
+            :class="{'light-request' : isDarkMode, 'dark-request' : !isDarkMode}"
+            >
+                Don't have an account?
+            <router-link to="/request">Request an account</router-link>
+            </div>
+        </transition>
         <div class="login">
             <img src="../../assets/DCHQ.svg" alt="" v-if="isDarkMode">
             <img src="../../assets/DCHQ-dark.svg" alt="" v-if="!isDarkMode">
@@ -27,6 +36,14 @@
 
 <script>
     export default {
+        data() {
+          return  {
+              show: false
+          }
+        },
+        mounted() {
+          this.show = true
+        },
         name: "SignIn",
         computed: {
             isDarkMode() {

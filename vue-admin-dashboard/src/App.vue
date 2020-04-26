@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  import "animate.css"
   export default {
     name: "App",
     mounted() {
@@ -17,6 +18,10 @@
 <style lang="scss">
 @import "./global-styles/colors";
 @import "./global-styles/typography.scss";
+
+* {
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 
 body {
   margin: 0;
