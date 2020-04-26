@@ -21,17 +21,17 @@ const getters = {
 
 // mutations
 const mutations = {
-    toggleDarkMode(state) {
-        if (state.isDarkMode) {
-            state.isDarkMode == false
-            document.body.style.background = "#212c4f"
-            window.localStorage.setItem("isDarkMode", "true")
-        }  else {
-            state.isDarkMode
-            document.body.style.background = "#f0f3f5"
-            window.localStorage.setItem("isDarkMode", "false")
-        }
+  toggleDarkMode(state) {
+    if (state.isDarkMode === true) {
+      state.isDarkMode = false;
+      document.body.style.background = "#f0f3f5";
+      window.localStorage.setItem("isDarkMode", "false");
+    } else {
+      state.isDarkMode = true;
+      document.body.style.background = "#212c4f";
+      window.localStorage.setItem("isDarkMode", "true");
     }
+  }
 }
 
 const actions = {
@@ -40,7 +40,7 @@ const actions = {
     }
 }
 
-export default new Vuex.store({
+export default new Vuex.Store({
     state,
     getters,
     mutations,
