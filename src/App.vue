@@ -26,6 +26,7 @@
 body {
   margin: 0;
   background-color: $dark-blue;
+  text-align: center;
 }
 h1 {
   @include heading-1;
